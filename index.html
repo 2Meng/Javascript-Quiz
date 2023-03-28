@@ -14,19 +14,18 @@
             <h2>Javascript Quiz!</h2>
             <p>This quiz will test you on your knowledge of basic Javascript. You will be given a 60 second timer for each question. At the end of the test you will be given a score based on your questions answered correctly! If you're ready then lets get started! Press the "Start Quiz" button to begin the quiz! Good luck!</p>
             <button onclick="" id="startBtn">Start Quiz</button>
-            
+            <button onclick="" id="answerOptions"></button>
         </div>
 
         <div id="answerbox"></div>
         <div id="correctIncorrect"></div>
         <button id="restartBtn">Restart</button>
 
-        <div id="highscores">
-            <h2>High Scores</h2>
-            <ul id="scoreslist">
-
-            </ul>
-        </div>
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username">
+        <button onclick="" id="highscoreBtn">Save score</button>
+        <button onclick="" id="clearScores">Clear Scores</button>
+        <div id="highscoreTable"></div>
     </section>
     <script src="/assets/script.js"></script>
 </body>
