@@ -19,13 +19,20 @@
 
         <div id="answerbox"></div>
         <div id="correctIncorrect"></div>
-        <button id="restartBtn">Restart</button>
+        <button onclick="" id="restartBtn">Restart</button>
 
-        <label for="username">Enter your username:</label>
-        <input type="text" id="username" name="username">
-        <button onclick="" id="highscoreBtn">Save score</button>
-        <button onclick="" id="clearScores">Clear Scores</button>
-        <div id="highscoreTable"></div>
+        <div class="high-score-section">
+            <label for="username">Enter your username:</label>
+            <input type="text" id="username" name="username">
+            <button onclick="" id="highscoreBtn">Save score</button>
+            <button onclick="" id="clearScores">Clear Scores</button>
+            <div class="high-scores">
+                <h2>High Scores!</h2>
+                <div id="highscoreTable"></div>
+            </div>
+            
+        </div>
+        
     </section>
     <script src="/assets/script.js"></script>
 </body>

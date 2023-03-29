@@ -76,9 +76,12 @@ function startQuiz(){
     if(!timerStarted){
         timerStarted = true;
         timer();
-    }
-    answerButtons ();
-    endQuiz();
+    };
+    answerButtons();
+
+    if(counter === 9 || timerSec < 0 ){
+        endQuiz();
+    };
 };
 
 // function for answer buttons to increment when questions answered.
@@ -98,15 +101,12 @@ function answerButtons (){
                 timerSec += 5;
                 correctIncorrect.innerHTML = 'correct';
                 correctIncorrect.style.color = 'green';
-                console.log(score)
             } else {
                 counter ++;
                 score --;
                 timerSec -= 5;
                 correctIncorrect.innerHTML = 'incorrect';
                 correctIncorrect.style.color = 'red';
-                console.log(counter)
-                console.log(score)
             }
             timeout()
             answerText.innerHTML = '';
@@ -120,31 +120,42 @@ function endQuiz(){
     currentText.innerHTML = 'You reached the end of the quiz!'
 
     
+    restartBtn.style.display = 'block';
+
+    // saves score
+
     saveScore.addEventListener('click', function(event){
         var userName = usersName.value;
-        var scoreBoard = {
-            name: userName,
-            score: score
+        
+         var scoreBoard = {
+             name: userName,
+              score: score
         };
+
         highScore.push(scoreBoard);
     
         highScore.sort(function(a, b){
             return b.score - a.score
         })
-    
-        localStorage.setItem('scoreboard', JSON.stringify(scoreBoard));
+
         localStorage.setItem('highscores', JSON.stringify(highScore));
+        
         displayScores();
     });
+
+    //clear scores
     
     clearScoresBtn.addEventListener('click', function() {
+        highScore = [];
+
         // Clear the high scores from local storage
         localStorage.removeItem('highscores');
-        localStorage.removeItem('scoreboard');
         
         // Clear the list element
         highScoreTable.innerHTML = '';
       });
+
+    //displays scores onto board
     
     function displayScores(){
         highScoreTable.innerHTML = '';
@@ -159,16 +170,12 @@ function endQuiz(){
                 highScoreTable.appendChild(scoreItem);
             }
         }
-    }
+    };
     
     window.onload = function() {
         displayScores();
     };
 };
-
-// function to prompt user to input username and then save into "highscores"
-
-
 
 /* displays the users score
 function userScore(){
@@ -199,3 +206,19 @@ function timer(){
         }
     },1000);
 };
+
+restartBtn.addEventListener('click', restartQuiz)
+
+function restartQuiz(){
+    counter = 0;
+    score = 0;
+    timerSec = 10;
+    timerStarted = false
+    currentText.innerHTML = '';
+    answerText.innerHTML = '';
+    restartBtn.style.display = 'none';
+    timerText.style.display = '';
+    startQuiz();
+}
+
+console.log(restartQuiz)
