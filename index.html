@@ -9,7 +9,10 @@
 </head>
 <body>
     <section class="mainSection">
+        <section id="display-quiz">
+
         <div id="timer"></div>
+
         <div id="textbox">
             <h2>Javascript Quiz!</h2>
             <p>This quiz will test you on your knowledge of basic Javascript. You will be given a 60 second timer for each question. At the end of the test you will be given a score based on your questions answered correctly! If you're ready then lets get started! Press the "Start Quiz" button to begin the quiz! Good luck!</p>
@@ -18,20 +21,34 @@
         </div>
 
         <div id="answerbox"></div>
-        <div id="correctIncorrect"></div>
-        <button onclick="" id="restartBtn">Restart</button>
 
-        <div class="high-score-section">
-            <label for="username">Enter your username:</label>
-            <input type="text" id="username" name="username">
-            <button onclick="" id="highscoreBtn">Save score</button>
-            <button onclick="" id="clearScores">Clear Scores</button>
-            <div class="high-scores">
+        <div id="correctIncorrect"></div>
+
+        <button onclick="" id="restartBtn">Restart</button>
+        </section>
+        
+
+        <section id="high-score-section">
+
+            <div id="high-score-box">
+                <label for="username">Enter your username:</label>
+
+                <input type="text" id="username" name="username" placeholder="Type in your username!">
+
+                <div id="high-score-buttons">
+                    <button onclick="" id="highscoreBtn">Save score</button>
+    
+                <button onclick="" id="clearScores">Clear Scores</button>
+                </div>
+                
+            </div>
+            
+        </section>
+        
+            <div id="high-scores">
                 <h2>High Scores!</h2>
                 <div id="highscoreTable"></div>
             </div>
-            
-        </div>
         
     </section>
     <script src="/assets/script.js"></script>

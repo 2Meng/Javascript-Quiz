@@ -8,10 +8,17 @@ var saveScore = document.getElementById('highscoreBtn');
 var usersName = document.getElementById('username');
 var highScoreTable = document.getElementById('highscoreTable');
 var clearScoresBtn = document.getElementById('clearScores');
+var displayHighScore = document.getElementById('high-score-section')
+var display_answers = document.getElementById('answerOptions')
+
+display_answers.style.display = 'none';
+correctIncorrect.style.margin = '30px';
+correctIncorrect.style.fontSize = '25px';
+
 
 var score = 0;
 var counter = 0;
-var timerSec = 10;
+var timerSec = 1000;
 var timerStarted = false;
 var highScore = [];
 
@@ -69,14 +76,21 @@ var questions = [
 ];
 
 // starts the quiz&timer & will move quiz forward -> 1 when answer buttons are pressed
-startBtn.addEventListener('click', startQuiz);
-function startQuiz(){
+startBtn.addEventListener('click', Quiz);
+function Quiz(){
     currentText.innerHTML = questions[counter].question;
+    currentText.style.fontSize = '2em';
+    currentText.style.fontWeight = 'bold'
+    currentText.style.width = '50%'
+    currentText.style.margin = '30px'
+    display_answers.style.display = ''
+
     
     if(!timerStarted){
         timerStarted = true;
         timer();
     };
+
     answerButtons();
 
     if(counter === 9 || timerSec < 0 ){
@@ -99,23 +113,23 @@ function answerButtons (){
                 counter ++;
                 score ++;
                 timerSec += 5;
-                correctIncorrect.innerHTML = 'correct';
+                correctIncorrect.innerHTML = 'Correct';
                 correctIncorrect.style.color = 'green';
             } else {
                 counter ++;
                 score --;
                 timerSec -= 5;
-                correctIncorrect.innerHTML = 'incorrect';
+                correctIncorrect.innerHTML = 'Incorrect';
                 correctIncorrect.style.color = 'red';
             }
-            timeout()
+            timeout_correctincorrect()
             answerText.innerHTML = '';
-            startQuiz()
+            Quiz()
         })
     }
 };
 
-// end of quiz function
+// end of quiz function with high score board functions 
 function endQuiz(){
     currentText.innerHTML = 'You reached the end of the quiz!'
 
@@ -128,8 +142,8 @@ function endQuiz(){
         var userName = usersName.value;
         
          var scoreBoard = {
-             name: userName,
-              score: score
+            name: userName,
+            score: score
         };
 
         highScore.push(scoreBoard);
@@ -175,24 +189,17 @@ function endQuiz(){
     window.onload = function() {
         displayScores();
     };
+    displayHighScore.style.display = 'block';
 };
 
-/* displays the users score
-function userScore(){
-    
-}; */
-
-
-
-// times out the correctIncorrect text
-function timeout(){
+function timeout_correctincorrect(){
     setTimeout(function(){
         correctIncorrect.style.display = 'none';
     }, 500);
     correctIncorrect.style.display = '';
 };
 
-// timer for quiz
+
 function timer(){
     var interval = setInterval(function(){
         timerSec --;
@@ -209,7 +216,7 @@ function timer(){
 
 restartBtn.addEventListener('click', restartQuiz)
 
-function restartQuiz(){
+ function restartQuiz(){
     counter = 0;
     score = 0;
     timerSec = 10;
@@ -218,7 +225,6 @@ function restartQuiz(){
     answerText.innerHTML = '';
     restartBtn.style.display = 'none';
     timerText.style.display = '';
-    startQuiz();
-}
-
-console.log(restartQuiz)
+    displayHighScore.style.display = 'none';
+    Quiz();
+} 

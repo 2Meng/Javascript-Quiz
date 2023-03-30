@@ -4,10 +4,134 @@
     box-sizing: border-box;
 }
 
-#restartBtn{
-    display: none;
+body{
+    background-color: rgb(252, 234, 211);
+    font-family: sans-serif;
+    letter-spacing: 1.25px;
+}
+
+#display-quiz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#textbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#textbox h2{
+    font-size: 3em;
+    margin: 15px;
+    padding: 10px;
+    background-color: rgb(216, 216, 52);
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+#textbox p{
+    margin: 20px;
+    width: 30%;
 }
 
 #answerOptions{
+    margin: 10px 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+#answerOptions:hover{
+    cursor: pointer;
+    background-color: rgb(236, 214, 214);
+}
+
+#timer{
+    position: fixed;
+    right: 20px;
+    top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#startBtn{
+    margin: 20px;
+    padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#startBtn:hover{
+    cursor: pointer;
+    background-color: rgb(236, 214, 214);
+}
+
+#high-score-section{
+    display: none;
+}
+
+#high-score-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#high-score-box label{
     margin: 5px;
+}
+
+#high-score-box input{
+    margin-bottom: 6px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+#high-score-buttons{
+    display: inline
+}
+
+#highscoreBtn,
+#clearScores{
+    margin: 5px;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+
+#highscoreBtn:hover,
+#clearScores:hover{
+    cursor: pointer;
+    background-color: rgb(236, 214, 214);
+}
+
+#high-scores{
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+#high-scores h2{
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+#high-scores #highscoreTable{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#restartBtn{
+    display: none;
+    margin: 5px;
+    margin-bottom: 50px;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+
+#restartBtn:hover{
+    cursor: pointer;
+    background-color: rgb(236, 214, 214);
 }
