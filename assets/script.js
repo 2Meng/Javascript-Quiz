@@ -18,7 +18,7 @@ correctIncorrect.style.fontSize = '25px';
 
 var score = 0;
 var counter = 0;
-var timerSec = 1000;
+var timerSec = 30;
 var timerStarted = false;
 var highScore = [];
 
@@ -107,7 +107,6 @@ function answerButtons (){
         answerText.appendChild(answerBtn);
         answerBtn.setAttribute('id', 'answerOptions');
     
-        // answer buttons if correct & incorrect events
         answerBtn.addEventListener('click', function(event){
             if (event.target.textContent === questions[counter].correct){
                 counter ++;
