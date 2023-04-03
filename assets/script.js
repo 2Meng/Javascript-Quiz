@@ -15,6 +15,10 @@ display_answers.style.display = 'none';
 correctIncorrect.style.margin = '30px';
 correctIncorrect.style.fontSize = '25px';
 
+if(localStorage.getItem('highscores')){
+    highScores = JSON.parse(localStorage.getItem('highscores'));
+}
+
 
 var score = 0;
 var counter = 0;
@@ -73,6 +77,10 @@ var questions = [
         answers: ['Let', 'Var', 'Int', 'Const'],
         correct: 'Int'
     },
+    {
+        question: '',
+        answers: '',
+    }
 ];
 
 // starts the quiz&timer & will move quiz forward -> 1 when answer buttons are pressed
@@ -83,8 +91,7 @@ function Quiz(){
     currentText.style.fontWeight = 'bold'
     currentText.style.width = '50%'
     currentText.style.margin = '30px'
-    display_answers.style.display = ''
-
+    
     
     if(!timerStarted){
         timerStarted = true;
@@ -93,8 +100,9 @@ function Quiz(){
 
     answerButtons();
 
-    if(counter === 9 || timerSec < 0 ){
+    if(counter === 10 || timerSec < 0 || timerSec === 0 ){
         endQuiz();
+        displayHighScore.style.display = 'block';
     };
 };
 
@@ -131,13 +139,13 @@ function answerButtons (){
 // end of quiz function with high score board functions 
 function endQuiz(){
     currentText.innerHTML = 'You reached the end of the quiz!'
-
     
     restartBtn.style.display = 'block';
+    display_answers.style.display = ''
+};
 
-    // saves score
-
-    saveScore.addEventListener('click', function(event){
+function saveHighScore(){
+    saveScore.addEventListener('click', function(){
         var userName = usersName.value;
         
          var scoreBoard = {
@@ -188,8 +196,7 @@ function endQuiz(){
     window.onload = function() {
         displayScores();
     };
-    displayHighScore.style.display = 'block';
-};
+}
 
 function timeout_correctincorrect(){
     setTimeout(function(){
@@ -218,7 +225,7 @@ restartBtn.addEventListener('click', restartQuiz)
  function restartQuiz(){
     counter = 0;
     score = 0;
-    timerSec = 10;
+    timerSec = 30;
     timerStarted = false
     currentText.innerHTML = '';
     answerText.innerHTML = '';
@@ -227,3 +234,6 @@ restartBtn.addEventListener('click', restartQuiz)
     displayHighScore.style.display = 'none';
     Quiz();
 } 
+
+
+saveHighScore();
