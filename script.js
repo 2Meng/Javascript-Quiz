@@ -216,6 +216,8 @@ function timer(){
             timerText.innerHTML = '';
             answerText.innerHTML = '';
             currentText.innerHTML = 'Times up!';
+            endQuiz();
+            displayHighScore.style.display = 'block';
         }
     },1000);
 };
